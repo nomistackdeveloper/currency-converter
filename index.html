@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en-US" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary US-Targeted SEO Meta Tags -->
+  <title>Free Live Currency Converter &amp; Exchange Rate Calculator | OryoHub</title>
+  <meta name="description" content="Convert USD to EUR, GBP, CAD, MXN, JPY, INR, PKR and 160+ world currencies instantly with live exchange rates. Fast, free, offline-ready browser currency calculator by OryoHub." />
+  <meta name="keywords" content="currency converter, live exchange rates, USD to EUR, USD to GBP, USD to CAD, USD to MXN, USD to INR, USD to PKR, foreign exchange calculator, money converter USA, oryohub" />
+  <meta name="author" content="OryoHub" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="canonical" href="https://oryohub.com/" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OryoHub" />
+  <meta property="og:title" content="Free Live Currency Converter &amp; Exchange Rate Calculator | OryoHub" />
+  <meta property="og:description" content="Instant foreign exchange rate calculator for 160+ currencies. Works offline with cached browser rates. Free &amp; no sign-up." />
+  <meta property="og:url" content="https://oryohub.com/" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Live Currency Converter | OryoHub" />
+  <meta name="twitter:description" content="Convert 160+ global currencies in real time directly in your browser." />
+
+  <!-- Google AdSense Script (Replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID) -->
+  <!--
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
+
+  <!-- Structured Data (JSON-LD) for Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "OryoHub Currency Converter",
+        "url": "https://oryohub.com/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Free real-time online currency converter and foreign exchange rate calculator supporting over 160 global currencies with offline browser storage."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How accurate are the exchange rates on OryoHub Currency Converter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "OryoHub fetches live mid-market foreign exchange rates updated regularly and caches them directly in your browser so you always have fast access even on slow connections."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this currency converter work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Once you visit OryoHub, the latest exchange rates and your preferred currencies are saved locally in your browser storage, allowing instant conversions even without an internet connection."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is OryoHub Currency Converter completely free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, OryoHub is 100% free to use with zero hidden fees, subscriptions, or account registration required."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandNavy: '#132245',
+            brandBlue: '#2563EB',
+            brandBlueHover: '#1d4ed8'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Clean number input appearance */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 min-h-screen flex flex-col font-sans antialiased">
+
+  <!-- Top Navigation Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="https://oryohub.com/" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 bg-[#2563EB] rounded-lg flex items-center justify-center font-black text-xl text-white shadow-xs">O</div>
+        <span class="font-extrabold text-xl tracking-tight text-slate-900">OryoHub <span class="text-[#2563EB] font-semibold text-sm hidden sm:inline">FX</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
+        <a href="#converter" class="hover:text-[#2563EB] transition-colors">Converter</a>
+        <a href="#popular-rates" class="hover:text-[#2563EB] transition-colors">Live USD Rates</a>
+        <a href="#how-it-works" class="hover:text-[#2563EB] transition-colors">Features</a>
+        <a href="#faq" class="hover:text-[#2563EB] transition-colors">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <span id="connectionBadge" class="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Live Rates
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1">
+
+    <!-- AD SLOT 1: Top Leaderboard Banner (High Visibility Above Fold) -->
+    <div class="max-w-5xl mx-auto px-4 pt-5">
+      <div class="w-full min-h-[90px] bg-slate-100 border border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center text-center p-2 overflow-hidden">
+        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-1">Advertisement</span>
+        <!-- Paste Google AdSense Display Ad Unit Code Here -->
+        <ins class="adsbygoogle"
+             style="display:block; width:100%;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1111111111"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+      </div>
+    </div>
+
+    <!-- Hero & Primary Currency Converter Section -->
+    <section id="converter" class="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-10">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+          Live Currency Converter
+        </h1>
+        <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+          Convert US Dollars (USD) and 160+ world currencies instantly using real-time mid-market exchange rates saved right in your browser.
+        </p>
+      </div>
+
+      <!-- Converter Card -->
+      <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+        <!-- Card Top Bar -->
+        <div class="bg-[#132245] text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2 text-xs sm:text-sm font-semibold">
+            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span>Foreign Exchange Calculator</span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-slate-300">
+            <span id="lastUpdatedText">Loading rates...</span>
+            <button type="button" id="btnRefreshRates" class="bg-[#2563EB] hover:bg-blue-700 text-white px-2.5 py-1 rounded-md font-semibold transition-colors flex items-center gap-1" title="Fetch latest exchange rates">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Refresh
+            </button>
+          </div>
+        </div>
+
+        <!-- Converter Body -->
+        <div class="p-5 sm:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-11 gap-4 items-end">
+            
+            <!-- Amount Input -->
+            <div class="md:col-span-3">
+              <label for="amountInput" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Amount</label>
+              <div class="relative">
+                <input type="number" id="amountInput" value="100" min="0" step="any" placeholder="100"
+                  class="w-full h-12 px-3.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-[#2563EB] focus:ring-2 focus:ring-blue-500/20 text-lg font-bold text-slate-900 outline-none transition-all" />
+              </div>
+            </div>
+
+            <!-- From Currency -->
+            <div class="md:col-span-3">
+              <label for="fromCurrency" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">From</label>
+              <select id="fromCurrency"
+                class="w-full h-12 px-3 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-[#2563EB] focus:ring-2 focus:ring-blue-500/20 text-sm font-semibold text-slate-900 outline-none cursor-pointer transition-all">
+                <option value="USD" selected>USD - US Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="GBP">GBP - British Pound</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="MXN">MXN - Mexican Peso</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="AUD">AUD - Australian Dollar</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="PKR">PKR - Pakistani Rupee</option>
+              </select>
+            </div>
+
+            <!-- Swap Button -->
+            <div class="md:col-span-2 flex justify-center">
+              <button type="button" id="btnSwap" aria-label="Swap Currencies"
+                class="w-full md:w-12 h-12 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white flex items-center justify-center shadow-md active:scale-95 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <polyline points="17 1 21 5 17 9"></polyline>
+                  <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                  <polyline points="7 23 3 19 7 15"></polyline>
+                  <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- To Currency -->
+            <div class="md:col-span-3">
+              <label for="toCurrency" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">To</label>
+              <select id="toCurrency"
+                class="w-full h-12 px-3 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-[#2563EB] focus:ring-2 focus:ring-blue-500/20 text-sm font-semibold text-slate-900 outline-none cursor-pointer transition-all">
+                <option value="EUR" selected>EUR - Euro</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="GBP">GBP - British Pound</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="MXN">MXN - Mexican Peso</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="AUD">AUD - Australian Dollar</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="PKR">PKR - Pakistani Rupee</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Conversion Result Display -->
+          <div class="mt-6 p-5 sm:p-6 rounded-2xl bg-[#f1f5f9] border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <p id="conversionSubtitle" class="text-xs sm:text-sm font-semibold text-slate-600">
+                100.00 US Dollar =
+              </p>
+              <div id="conversionResult" class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1">
+                92.40 EUR
+              </div>
+              <p id="unitRateDisplay" class="text-xs font-medium text-slate-500 mt-1.5">
+                1 USD = 0.9240 EUR &bull; 1 EUR = 1.0823 USD
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <button type="button" id="btnCopyResult"
+                class="bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-xs transition-all flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy Result
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Popular US Pairs Pills -->
+          <div class="mt-5 pt-4 border-t border-slate-100">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2.5">Popular US Conversions:</span>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="quick-pair text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#2563EB] hover:text-white text-slate-700 transition-colors" data-from="USD" data-to="EUR">USD &rarr; EUR</button>
+              <button type="button" class="quick-pair text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#2563EB] hover:text-white text-slate-700 transition-colors" data-from="USD" data-to="GBP">USD &rarr; GBP</button>
+              <button type="button" class="quick-pair text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#2563EB] hover:text-white text-slate-700 transition-colors" data-from="USD" data-to="CAD">USD &rarr; CAD</button>
+              <button type="button" class="quick-pair text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#2563EB] hover:text-white text-slate-700 transition-colors" data-from="USD" data-to="MXN">USD &rarr; MXN</button>
+              <button type="button" class="quick-pair text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#2563EB] hover:text-white text-slate-700 transition-colors" data-from="USD" data-to="JPY">USD &rarr; JPY</button>
+              <button type="button" class="quick-pair text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#2563EB] hover:text-white text-slate-700 transition-colors" data-from="USD" data-to="INR">USD &rarr; INR</button>
+              <button type="button" class="quick-pair text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-[#2563EB] hover:text-white text-slate-700 transition-colors" data-from="USD" data-to="PKR">USD &rarr; PKR</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- AD SLOT 2: Mid-Page In-Article Rectangle / Responsive Banner -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-8">
+      <div class="w-full min-h-[250px] bg-slate-100 border border-dashed border-slate-300 rounded-2xl flex flex-col items-center justify-center text-center p-4 overflow-hidden">
+        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-2">Advertisement</span>
+        <!-- Paste Google AdSense In-Content Ad Unit Code Here -->
+        <ins class="adsbygoogle"
+             style="display:block; width:100%;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="2222222222"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+      </div>
+    </div>
+
+    <!-- Live USD Exchange Rates Table -->
+    <section id="popular-rates" class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">Live US Dollar (USD) Exchange Rates</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Quick reference table for major global currencies against 1 USD</p>
+          </div>
+          <span class="text-xs font-semibold text-[#2563EB] bg-blue-50 px-2.5 py-1 rounded-md">Base: 1 USD</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold uppercase text-slate-500">
+                <th class="py-3 px-6">Currency</th>
+                <th class="py-3 px-6">Code</th>
+                <th class="py-3 px-6 text-right">1 USD Equals</th>
+                <th class="py-3 px-6 text-right">Inverse (1 Unit to USD)</th>
+              </tr>
+            </thead>
+            <tbody id="ratesTableBody" class="divide-y divide-slate-100 text-sm">
+              <!-- Populated dynamically via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- AD SLOT 3: Bottom Footer Banner -->
+    <div class="max-w-5xl mx-auto px-4 pb-8">
+      <div class="w-full min-h-[90px] bg-slate-100 border border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center text-center p-2 overflow-hidden">
+        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-1">Advertisement</span>
+        <!-- Paste Google AdSense Footer Ad Unit Code Here -->
+        <ins class="adsbygoogle"
+             style="display:block; width:100%;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="3333333333"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+      </div>
+    </div>
+    <!-- Features Section (SEO Content Rich) -->
+    <section id="how-it-works" class="max-w-6xl mx-auto px-4 sm:px-6 py-10 border-t border-slate-200">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Why Use OryoHub Currency Converter?</h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600">Engineered for travelers, online shoppers, freelancers, and international businesses.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] flex items-center justify-center font-bold mb-3">⚡</div>
+          <h3 class="font-bold text-slate-900">Real-Time Mid-Market Rates</h3>
+          <p class="mt-1.5 text-xs sm:text-sm text-slate-600">Get accurate, up-to-date foreign exchange rates across 160+ global currencies including USD, EUR, GBP, CAD, and MXN.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-3">💾</div>
+          <h3 class="font-bold text-slate-900">Browser Data Save &amp; Offline Mode</h3>
+          <p class="mt-1.5 text-xs sm:text-sm text-slate-600">Exchange rates and your last-used currencies are automatically saved in your browser so you can convert offline anytime.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold mb-3">📱</div>
+          <h3 class="font-bold text-slate-900">Fast on Mobile &amp; Desktop</h3>
+          <p class="mt-1.5 text-xs sm:text-sm text-slate-600">Lightweight single-page design loads in milliseconds on iPhone, Android, iPad, and desktop browsers.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold mb-3">🔒</div>
+          <h3 class="font-bold text-slate-900">100% Free &amp; Private</h3>
+          <p class="mt-1.5 text-xs sm:text-sm text-slate-600">No login, no tracking of your financial amounts, and zero subscription fees. Everything runs directly in your browser.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section (Matches JSON-LD Schema for Google Snippets) -->
+    <section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 py-10 border-t border-slate-200">
+      <h2 class="text-2xl font-extrabold text-slate-900 text-center mb-8">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-xs">
+          <h3 class="font-bold text-slate-900 text-base mb-1.5">How accurate are the exchange rates on OryoHub Currency Converter?</h3>
+          <p class="text-sm text-slate-600">OryoHub fetches live mid-market foreign exchange rates updated regularly and caches them directly in your browser so you always have fast access even on slow connections.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-xs">
+          <h3 class="font-bold text-slate-900 text-base mb-1.5">Does this currency converter work offline?</h3>
+          <p class="text-sm text-slate-600">Yes. Once you visit OryoHub, the latest exchange rates and your preferred currencies are saved locally in your browser storage, allowing instant conversions even without an internet connection.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-xs">
+          <h3 class="font-bold text-slate-900 text-base mb-1.5">Is OryoHub Currency Converter completely free?</h3>
+          <p class="text-sm text-slate-600">Yes, OryoHub is 100% free to use with zero hidden fees, subscriptions, or account registration required.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-lg opacity-0 translate-y-2 pointer-events-none transition-all duration-200">
+    Copied to clipboard!
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-semibold text-slate-700 mb-1">&copy; <span id="year"></span> OryoHub.com &bull; Free Live Currency Converter</p>
+      <p>Exchange rates are provided for informational purposes only and saved locally in your browser for offline convenience.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // DOM Elements
+      const amountInput = document.getElementById("amountInput");
+      const fromSelect = document.getElementById("fromCurrency");
+      const toSelect = document.getElementById("toCurrency");
+      const btnSwap = document.getElementById("btnSwap");
+      const btnRefresh = document.getElementById("btnRefreshRates");
+      const btnCopy = document.getElementById("btnCopyResult");
+      const conversionSubtitle = document.getElementById("conversionSubtitle");
+      const conversionResult = document.getElementById("conversionResult");
+      const unitRateDisplay = document.getElementById("unitRateDisplay");
+      const lastUpdatedText = document.getElementById("lastUpdatedText");
+      const connectionBadge = document.getElementById("connectionBadge");
+      const ratesTableBody = document.getElementById("ratesTableBody");
+      const toast = document.getElementById("toast");
+
+      // LocalStorage Keys
+      const STORAGE_RATES_KEY = "oryohub_fx_rates_v1";
+      const STORAGE_PREFS_KEY = "oryohub_fx_prefs_v1";
+
+      // Comprehensive Currency Names for Dropdown & Display
+      const CURRENCY_NAMES = {
+        USD: "US Dollar", EUR: "Euro", GBP: "British Pound", CAD: "Canadian Dollar",
+        MXN: "Mexican Peso", JPY: "Japanese Yen", AUD: "Australian Dollar", CHF: "Swiss Franc",
+        CNY: "Chinese Yuan", INR: "Indian Rupee", PKR: "Pakistani Rupee", AED: "UAE Dirham",
+        SAR: "Saudi Riyal", BRL: "Brazilian Real", KRW: "South Korean Won", SGD: "Singapore Dollar",
+        HKD: "Hong Kong Dollar", NZD: "New Zealand Dollar", SEK: "Swedish Krona", NOK: "Norwegian Krone",
+        DKK: "Danish Krone", ZAR: "South African Rand", TRY: "Turkish Lira", RUB: "Russian Ruble",
+        PLN: "Polish Zloty", THB: "Thai Baht", IDR: "Indonesian Rupiah", MYR: "Malaysian Ringgit",
+        PHP: "Philippine Peso", VND: "Vietnamese Dong", EGP: "Egyptian Pound", NGN: "Nigerian Naira",
+        BDT: "Bangladeshi Taka", ILS: "Israeli New Shekel", CLP: "Chilean Peso", COP: "Colombian Peso",
+        PEN: "Peruvian Sol", ARS: "Argentine Peso", QAR: "Qatari Riyal", KWD: "Kuwaiti Dinar"
+      };
+
+      // Fallback Rates (Base: USD) in case user opens offline on very first load
+      const FALLBACK_RATES = {
+        USD: 1, EUR: 0.924, GBP: 0.789, CAD: 1.385, MXN: 19.85, JPY: 153.40,
+        AUD: 1.518, CHF: 0.876, CNY: 7.18, INR: 84.35, PKR: 277.80, AED: 3.6725,
+        SAR: 3.75, BRL: 5.74, KRW: 1385.0, SGD: 1.334, HKD: 7.77, NZD: 1.668,
+        SEK: 10.72, NOK: 10.95, DKK: 6.89, ZAR: 17.65, TRY: 34.25, PLN: 4.02,
+        THB: 34.10, IDR: 15720, MYR: 4.38, PHP: 58.40, VND: 25350, EGP: 49.20,
+        NGN: 1650, BDT: 119.50, ILS: 3.72, CLP: 965, COP: 4380, PEN: 3.77,
+        ARS: 995, QAR: 3.64, KWD: 0.307
+      };
+
+      let exchangeRates = { ...FALLBACK_RATES };
+      let lastUpdatedTimestamp = null;
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.remove("opacity-0", "translate-y-2");
+        setTimeout(() => {
+          toast.classList.add("opacity-0", "translate-y-2");
+        }, 2200);
+      }
+
+      // Populate Currency Dropdowns sorted cleanly with popular US currencies at top
+      function populateDropdowns(ratesObj) {
+        const priority = ["USD", "EUR", "GBP", "CAD", "MXN", "JPY", "AUD", "CHF", "INR", "PKR", "AED", "SAR"];
+        const allCodes = Object.keys(ratesObj).sort();
+        const orderedCodes = [...new Set([...priority.filter(c => ratesObj[c]), ...allCodes])];
+
+        const currentFrom = fromSelect.value || "USD";
+        const currentTo = toSelect.value || "EUR";
+
+        const buildOptions = () => orderedCodes.map(code => {
+          const name = CURRENCY_NAMES[code] || code;
+          return `<option value="${code}">${code} - ${name}</option>`;
+        }).join("");
+
+        fromSelect.innerHTML = buildOptions();
+        toSelect.innerHTML = buildOptions();
+
+        fromSelect.value = ratesObj[currentFrom] ? currentFrom : "USD";
+        toSelect.value = ratesObj[currentTo] ? currentTo : "EUR";
+      }
+
+      // Save & Load Preferences in Browser LocalStorage
+      function savePreferences() {
+        try {
+          localStorage.setItem(STORAGE_PREFS_KEY, JSON.stringify({
+            amount: amountInput.value,
+            from: fromSelect.value,
+            to: toSelect.value
+          }));
+        } catch (e) {}
+      }
+
+      function loadPreferences() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(STORAGE_PREFS_KEY));
+          if (saved) {
+            if (saved.amount !== undefined) amountInput.value = saved.amount;
+            if (saved.from) fromSelect.value = saved.from;
+            if (saved.to) toSelect.value = saved.to;
+          }
+        } catch (e) {}
+      }
+
+      // Load Cached Exchange Rates from Browser LocalStorage
+      function loadCachedRates() {
+        try {
+          const cached = JSON.parse(localStorage.getItem(STORAGE_RATES_KEY));
+          if (cached && cached.rates) {
+            exchangeRates = cached.rates;
+            lastUpdatedTimestamp = cached.timestamp;
+            return true;
+          }
+        } catch (e) {}
+        return false;
+      }
+
+      // Fetch Live Exchange Rates (Free, No API Key Required)
+      async function fetchLiveRates(force = false) {
+        const hasCache = loadCachedRates();
+        if (hasCache) {
+          populateDropdowns(exchangeRates);
+          loadPreferences();
+          calculateConversion();
+          renderUsdTable();
+          updateTimestampLabel(true);
+        }
+
+        // Skip network fetch if cached data is under 1 hour old and not forced
+        const oneHour = 60 * 60 * 1000;
+        if (!force && hasCache && lastUpdatedTimestamp && (Date.now() - lastUpdatedTimestamp < oneHour)) {
+          return;
+        }
+
+        try {
+          const response = await fetch("https://open.er-api.com/v6/latest/USD");
+          if (!response.ok) throw new Error("Network response error");
+          const data = await response.json();
+
+          if (data && data.rates) {
+            exchangeRates = data.rates;
+            lastUpdatedTimestamp = Date.now();
+
+            localStorage.setItem(STORAGE_RATES_KEY, JSON.stringify({
+              rates: exchangeRates,
+              timestamp: lastUpdatedTimestamp
+            }));
+
+            populateDropdowns(exchangeRates);
+            loadPreferences();
+            calculateConversion();
+            renderUsdTable();
+            updateTimestampLabel(false);
+
+            if (force) showToast("Exchange rates updated!");
+          }
+        } catch (err) {
+          updateTimestampLabel(true);
+          if (force) showToast("Offline mode: Using saved browser rates");
+        }
+      }
+
+      function updateTimestampLabel(isCached) {
+        if (!lastUpdatedTimestamp) {
+          lastUpdatedText.textContent = "Offline fallback rates";
+          return;
+        }
+        const date = new Date(lastUpdatedTimestamp);
+        const timeStr = date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        lastUpdatedText.textContent = isCached ? `Saved rate (${timeStr})` : `Updated ${timeStr}`;
+
+        if (!navigator.onLine) {
+          connectionBadge.className = "inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200";
+          connectionBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500"></span> Offline Saved`;
+        } else {
+          connectionBadge.className = "inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200";
+          connectionBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live Rates`;
+        }
+      }
+
+      // Perform Instant Conversion Math
+      function calculateConversion() {
+        const amount = parseFloat(amountInput.value);
+        const from = fromSelect.value;
+        const to = toSelect.value;
+
+        const fromRate = exchangeRates[from] || 1;
+        const toRate = exchangeRates[to] || 1;
+
+        const validAmount = isNaN(amount) || amount < 0 ? 0 : amount;
+        const converted = (validAmount / fromRate) * toRate;
+        const singleUnitRate = (1 / fromRate) * toRate;
+        const inverseUnitRate = (1 / toRate) * fromRate;
+
+        const fromName = CURRENCY_NAMES[from] || from;
+        const decimals = converted >= 1000 ? 2 : (converted < 1 ? 4 : 2);
+
+        conversionSubtitle.textContent = `${validAmount.toLocaleString("en-US", { maximumFractionDigits: 2 })} ${fromName} =`;
+        conversionResult.textContent = `${converted.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: decimals })} ${to}`;
+        unitRateDisplay.textContent = `1 ${from} = ${singleUnitRate.toFixed(4)} ${to}  •  1 ${to} = ${inverseUnitRate.toFixed(4)} ${from}`;
+
+        savePreferences();
+      }
+
+      // Populate Live USD Reference Table
+      function renderUsdTable() {
+        const majorCodes = ["EUR", "GBP", "CAD", "MXN", "JPY", "AUD", "CHF", "INR", "PKR", "AED"];
+        ratesTableBody.innerHTML = majorCodes.map(code => {
+          const rate = exchangeRates[code];
+          if (!rate) return "";
+          const inverse = 1 / rate;
+          const name = CURRENCY_NAMES[code] || code;
+          return `
+            <tr class="hover:bg-slate-50 transition-colors cursor-pointer" onclick="window.selectQuickPair('USD', '${code}')">
+              <td class="py-3.5 px-6 font-semibold text-slate-900">${name}</td>
+              <td class="py-3.5 px-6 font-bold text-[#2563EB]">${code}</td>
+              <td class="py-3.5 px-6 text-right font-mono font-semibold text-slate-800">${rate.toFixed(4)}</td>
+              <td class="py-3.5 px-6 text-right font-mono text-slate-500">${inverse.toFixed(4)}</td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      // Global helper for clicking rows in table
+      window.selectQuickPair = function (from, to) {
+        fromSelect.value = from;
+        toSelect.value = to;
+        calculateConversion();
+        document.getElementById("converter").scrollIntoView({ behavior: "smooth" });
+      };
+
+      // Event Listeners
+      amountInput.addEventListener("input", calculateConversion);
+      fromSelect.addEventListener("change", calculateConversion);
+      toSelect.addEventListener("change", calculateConversion);
+
+      btnSwap.addEventListener("click", () => {
+        const temp = fromSelect.value;
+        fromSelect.value = toSelect.value;
+        toSelect.value = temp;
+        calculateConversion();
+      });
+
+      btnRefresh.addEventListener("click", () => {
+        fetchLiveRates(true);
+      });
+
+      btnCopy.addEventListener("click", () => {
+        const textToCopy = `${conversionSubtitle.textContent} ${conversionResult.textContent}`;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          showToast("Copied conversion result!");
+        });
+      });
+
+      document.querySelectorAll(".quick-pair").forEach(btn => {
+        btn.addEventListener("click", () => {
+          fromSelect.value = btn.getAttribute("data-from");
+          toSelect.value = btn.getAttribute("data-to");
+          calculateConversion();
+        });
+      });
+
+      window.addEventListener("online", () => updateTimestampLabel(false));
+      window.addEventListener("offline", () => updateTimestampLabel(true));
+
+      // Initialize App
+      populateDropdowns(exchangeRates);
+      loadPreferences();
+      calculateConversion();
+      renderUsdTable();
+      fetchLiveRates(false);
+    })();
+  </script>
+</body>
+</html>
